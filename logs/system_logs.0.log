@@ -1,0 +1,201 @@
+Apr 13, 2025 4:59:29 A.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T04:59:29.589938700
+Apr 13, 2025 4:59:58 A.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Added a new Reservation at 2025-04-13T04:59:58.201076500
+Apr 13, 2025 5:01:07 A.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T05:01:07.948815100
+Apr 13, 2025 3:08:40 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T15:08:40.357650500
+Apr 13, 2025 3:09:01 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Checked Guest: Jenny Huang out at 2025-04-13T15:09:01.448303800
+Apr 13, 2025 3:10:18 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T15:10:18.349214600
+Apr 13, 2025 3:12:39 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name02 logged in at: 2025-04-13T15:12:39.104802800
+Apr 13, 2025 3:13:40 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T15:13:40.864807400
+Apr 13, 2025 3:20:57 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name02 logged in at: 2025-04-13T15:20:57.785444900
+Apr 13, 2025 3:21:14 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin deleted a record of reservation with ID: 4 and under guest name: Jenny Huang at 2025-04-13T15:21:14.004196900
+Apr 13, 2025 3:21:19 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Checked Guest: Jackson Miles out at 2025-04-13T15:21:19.029989600
+Apr 13, 2025 3:21:51 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Added a new Reservation at 2025-04-13T15:21:51.188876900
+Apr 13, 2025 3:23:20 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Checked Guest: Zohaib Vehra out at 2025-04-13T15:23:20.523311300
+Apr 13, 2025 3:24:03 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T15:24:03.029208900
+Apr 13, 2025 8:52:30 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T20:52:30.212439800
+Apr 13, 2025 8:53:51 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Added a new Reservation at 2025-04-13T20:53:51.375306
+Apr 13, 2025 8:55:03 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T20:55:03.633629800
+Apr 13, 2025 8:55:14 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name02 logged in at: 2025-04-13T20:55:14.961323
+Apr 13, 2025 8:55:18 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Checked Guest: Miles Jordan out at 2025-04-13T20:55:18.064340800
+Apr 13, 2025 8:56:10 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin deleted a record of reservation with ID: 2 and under guest name: Emma Stone at 2025-04-13T20:56:10.854972600
+Apr 13, 2025 8:56:20 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T20:56:20.971098800
+Apr 13, 2025 9:04:28 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T21:04:28.934356900
+Apr 13, 2025 9:04:46 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T21:04:46.420215800
+Apr 13, 2025 9:07:12 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T21:07:12.795019300
+Apr 13, 2025 9:07:18 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T21:07:18.090066400
+Apr 13, 2025 9:18:53 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T21:18:53.376749700
+Apr 13, 2025 9:19:12 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T21:19:12.841717500
+Apr 13, 2025 9:26:41 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T21:26:41.942117
+Apr 13, 2025 9:26:59 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T21:26:59.577996200
+Apr 13, 2025 9:32:20 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-04-13T21:32:20.717265800
+Apr 13, 2025 9:33:13 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Added a new Reservation at 2025-04-13T21:33:13.142368900
+Apr 13, 2025 9:33:35 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin Checked Guest: Kevin Tran out at 2025-04-13T21:33:35.323279600
+Apr 13, 2025 9:35:18 P.M. ca.senecacollege.cpa.app.utils.Logging logActivity
+INFO: Admin logged out at 2025-04-13T21:35:18.775824100
+May 22, 2025 3:34:31 P.M. utils.Logging logException
+SEVERE: [Database Error in main() - Main Class] path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+java.sql.SQLException: path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.open(SQLiteConnection.java:261)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at app.milestone/app.Main.main(Main.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:465)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1164)
+
+May 22, 2025 3:37:24 P.M. utils.Logging logException
+SEVERE: [Database Error in main() - Main Class] path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+java.sql.SQLException: path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.open(SQLiteConnection.java:261)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at app.milestone/app.Main.main(Main.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:465)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1164)
+
+May 22, 2025 4:10:36 P.M. utils.Logging logException
+SEVERE: [Database Error in main() - Main Class] path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+java.sql.SQLException: path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.open(SQLiteConnection.java:261)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at app.milestone/app.Main.main(Main.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:465)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1164)
+
+May 22, 2025 4:11:58 P.M. utils.Logging logException
+SEVERE: [Database Error in main() - Main Class] path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+java.sql.SQLException: path to 'src/ca/senecacollege/cpa/app/database/HotelReservation.db': 'D:\SOFTWARE DEV STUFF\Application Development with JavaFX\Hotel Reservation App\src\ca' does not exist
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.open(SQLiteConnection.java:261)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.createConnection(JDBC.java:106)
+	at org.xerial.sqlitejdbc@3.49.1.0/org.sqlite.JDBC.connect(JDBC.java:79)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at app.milestone/app.Main.main(Main.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:465)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1164)
+
+May 22, 2025 4:12:56 P.M. utils.Logging logException
+SEVERE: [General Exception in loadMedia() - Home screen controller] Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+	at app.milestone/controllers.HomeScreenController.loadMedia(HomeScreenController.java:69)
+	at app.milestone/controllers.HomeScreenController.initialize(HomeScreenController.java:37)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2662)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2555)
+	at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2523)
+	at app.milestone/app.Main.start(Main.java:49)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+
+May 22, 2025 4:12:56 P.M. utils.Logging logException
+SEVERE: [General Exception in initialize() - Confirmation screen controller] Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+	at app.milestone/controllers.ConfirmationController.initialize(ConfirmationController.java:50)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2662)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2555)
+	at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2523)
+	at app.milestone/app.Main.start(Main.java:53)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+
+May 22, 2025 4:12:56 P.M. utils.Logging logException
+SEVERE: [General Exception in initialize() - Admin Login controller] Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because the return value of "java.lang.Class.getResource(String)" is null
+	at app.milestone/controllers.AdminLoginController.initialize(AdminLoginController.java:44)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2662)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2555)
+	at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2523)
+	at app.milestone/app.Main.start(Main.java:54)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+

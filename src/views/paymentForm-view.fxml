@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="rootPane" maxHeight="720.0" maxWidth="1280.0" minHeight="840.0" minWidth="1280.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.PaymentCheckoutController">
+   <stylesheets>
+      <URL value="@../styles/mainApp-styles.css" />
+      <URL value="@../styles/button-styles.css" />
+   </stylesheets>
+   <center>
+      <VBox fx:id="formContentPane" alignment="TOP_CENTER" maxWidth="1280.0" minWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="titleText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Checkout Form">
+               <font>
+                  <Font name="Britannic Bold" size="60.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="titleText2" layoutX="357.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Information">
+               <font>
+                  <Font name="Britannic Bold" size="42.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <HBox fx:id="formFieldPane1" alignment="CENTER_RIGHT" maxWidth="1200.0" minHeight="100.0" minWidth="600.0">
+               <children>
+                  <VBox fx:id="labelPane1" alignment="CENTER_RIGHT">
+                     <children>
+                        <Label fx:id="cardNumLabel" text="Card Number">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="requiredLabel1" text="Required">
+                           <font>
+                              <Font name="Arial Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <TextField fx:id="cardNumTF" minWidth="700.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets right="150.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="formFieldPane2" alignment="CENTER_RIGHT" layoutX="50.0" layoutY="215.0" maxWidth="1200.0" minHeight="100.0" minWidth="600.0">
+               <children>
+                  <VBox fx:id="labelPane2" alignment="CENTER_RIGHT">
+                     <children>
+                        <Label fx:id="cardTypeLabel" text="Card Type">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="requiredLabel2" text="Required">
+                           <font>
+                              <Font name="Arial Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <ChoiceBox fx:id="cardTypeCB" minWidth="700.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+               </children>
+               <padding>
+                  <Insets right="150.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="formFieldPane3" alignment="CENTER_RIGHT" layoutX="50.0" layoutY="172.0" maxWidth="1200.0" minHeight="100.0" minWidth="600.0">
+               <children>
+                  <VBox fx:id="labelPane3" alignment="CENTER_RIGHT">
+                     <children>
+                        <Label fx:id="cscLabel" text="Enter CSC">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="requiredLabel3" text="Required">
+                           <font>
+                              <Font name="Arial Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <TextField fx:id="cscTF" minWidth="700.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets right="150.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="formFieldPane4" alignment="CENTER_RIGHT" layoutX="50.0" layoutY="315.0" maxWidth="1200.0" minHeight="100.0" minWidth="600.0">
+               <children>
+                  <VBox fx:id="labelPane4" alignment="CENTER_RIGHT">
+                     <children>
+                        <Label fx:id="expDateLabel" text="Exp Date">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="requiredLabel4" text="Required">
+                           <font>
+                              <Font name="Arial Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <DatePicker fx:id="expDatePicker" minWidth="700.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+               <padding>
+                  <Insets right="150.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" maxWidth="1200.0" minHeight="100.0" minWidth="600.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="addDiscountBtn" mnemonicParsing="false" onAction="#addDiscount" text="Add Discount" />
+                  <TextField fx:id="discountTF" minWidth="700.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets right="150.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox fx:id="formControlBtnPane" alignment="TOP_CENTER" maxWidth="1280.0" minWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="confirmBtn" minHeight="50.0" minWidth="350.0" mnemonicParsing="false" onAction="#confirmPayment" text="Confirm and Continue">
+               <HBox.margin>
+                  <Insets bottom="50.0" right="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="cancelBtn" layoutX="607.0" layoutY="10.0" minHeight="50.0" minWidth="350.0" mnemonicParsing="false" onAction="#cancel" text="Cancel">
+               <HBox.margin>
+                  <Insets bottom="50.0" left="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

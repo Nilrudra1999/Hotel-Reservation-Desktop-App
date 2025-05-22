@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="rootPane" maxHeight="720.0" maxWidth="1280.0" minHeight="840.0" minWidth="1280.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.HomeScreenController">
+   <stylesheets>
+      <URL value="@../styles/mainApp-styles.css" />
+      <URL value="@../styles/button-styles.css" />
+   </stylesheets>
+   <left>
+      <StackPane fx:id="mediaPane" maxHeight="820.0" maxWidth="620.0" minHeight="820.0" minWidth="620.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+         <children>
+            <MediaView fx:id="instructionVid" fitHeight="800.0" fitWidth="600.0" />
+         </children>
+      </StackPane>
+   </left>
+   <right>
+      <VBox fx:id="contentPane" alignment="CENTER_LEFT" maxHeight="840.0" maxWidth="650.0" minHeight="840.0" minWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="titleText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To">
+               <font>
+                  <Font name="Britannic Bold" size="46.0" />
+               </font>
+            </Text>
+            <Text fx:id="titleText2" layoutX="236.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Northern DevPort">
+               <font>
+                  <Font name="Britannic Bold" size="54.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="mainMsgText" layoutX="40.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Need help booking your reservation? Watch our step-by-step video guide or reach out to our award winning staff, always ready to assist you. Thank you for choosing to stay with us!"
+                  wrappingWidth="575.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox fx:id="btnPane" alignment="CENTER_LEFT" maxHeight="150.0" maxWidth="550.0" minHeight="120.0" minWidth="500.0">
+               <children>
+                  <Button fx:id="resBtn" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#makeReservation" text="Make Reservation">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="adminBtn" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#adminLogin" text="Admin Login">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>
