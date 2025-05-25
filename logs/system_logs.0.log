@@ -1,0 +1,9 @@
+May 25, 2025 1:39:42 A.M. utils.Logging logActivity
+INFO: Admin name01 logged in at: 2025-05-25T01:39:42.382676800
+
+May 25, 2025 1:40:06 A.M. utils.Logging logActivity
+INFO: Admin checked Jackson Miles out at 2025-05-25T01:40:06.485810600
+
+May 25, 2025 1:40:35 A.M. utils.Logging logActivity
+INFO: Admin logged out at 2025-05-25T01:40:35.397957900
+
