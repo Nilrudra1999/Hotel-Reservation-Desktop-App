@@ -1,11 +1,12 @@
 /***********************************************************************************************************************
- * Check-In Form Controller: Manages the initial reservation information for guests checking into the hotel. Has
+ * Hotel Reservation Desktop Application
+ *
+ * Check-in form controller class: Manages the initial reservation information for guests checking into the hotel. Has
  * dynamic form validation for all fields within the forms and final validation upon submission of each form.
  **********************************************************************************************************************/
 package controllers;
 
 import models.Reservation;
-import utils.Logging;
 import utils.SceneName;
 
 import javafx.event.ActionEvent;
@@ -25,23 +26,23 @@ import java.util.function.UnaryOperator;
 
 import static app.Main.*;
 
+
+
 public class CheckInFormController implements Initializable {
     @FXML private TextField numOfPeopleTF;
     @FXML private DatePicker checkInDatePicker, checkOutDatePicker;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private String originPoint;
     private static int id = 0;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         numbersOnlyTextField(numOfPeopleTF);
         readReservationIdValue();
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void confirmCheckIn(ActionEvent event) {
         LocalDate checkin = checkInDatePicker.getValue();
         LocalDate checkout = checkOutDatePicker.getValue();
@@ -59,9 +60,9 @@ public class CheckInFormController implements Initializable {
         String checkOutDate = checkout.toString();
         int numPeople = Integer.parseInt(numOfPeopleTF.getText());
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        RoomFormController controller = getLoaderMap().get(SceneName.ROOMSFORM).getController();
-        controller.setOriginPoint(originPoint, new Reservation(id += 1, checkInDate, checkOutDate, numPeople));
-        stage.setScene(getSceneMap().get(SceneName.ROOMSFORM));
+        RoomFormController cn = getSceneBuilder().getLoaders().get(SceneName.ROOMSFORM).getController();
+        cn.setOriginPoint(originPoint, new Reservation(id += 1, checkInDate, checkOutDate, numPeople));
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.ROOMSFORM));
         stage.show();
     }
 
@@ -69,18 +70,16 @@ public class CheckInFormController implements Initializable {
     public void cancel(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         if (originPoint.equals("homescreen")) {
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         } else {
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         }
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setOriginPoint(String srcOrigin) {
         this.originPoint = srcOrigin;
         clearForm();
@@ -111,13 +110,11 @@ public class CheckInFormController implements Initializable {
              ResultSet rs = st.executeQuery()) {
             if (rs.next()) id = rs.getInt("max_id");
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in readReservationIdValue() - Check in form controller");
+            getLogger().logException(e, "SQL Error in readReservationIdValue() - Check in form controller");
         }
     }
 
 
-
-    // Textfield Listeners ---------------------------------------------------------------------------------------------
     private void numbersOnlyTextField(TextField textField) {
         UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();

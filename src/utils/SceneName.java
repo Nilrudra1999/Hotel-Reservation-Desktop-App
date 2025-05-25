@@ -1,6 +1,8 @@
 /***********************************************************************************************************************
- * Scene Names Enum Class: Representing the names of the scenes (views) within this application. Used by the scene
- * map as keys for their corresponding scene objects, which is used when switching scenes.
+ * Hotel Reservation Desktop Application
+ *
+ * Scene name enum utility class: An app wide enum class used to gain access to various scenes using an easy-to-follow
+ * name. This class contains every possible scene name used throughout the app for easy access and maintenance.
  **********************************************************************************************************************/
 package utils;
 
@@ -12,6 +14,5 @@ public enum SceneName {
     ROOMSFORM,
     GUESTINFOFORM,
     PAYMENTFORM,
-    CONFIRMSCREEN,
-    FEEDBACKFORM
+    CONFIRMSCREEN
 }

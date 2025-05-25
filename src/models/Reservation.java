@@ -1,5 +1,7 @@
 /***********************************************************************************************************************
- * Reservation Model Class: Represents the details of a single reservation, this class contains a reference to a
+ * Hotel Reservation Desktop Application
+ *
+ * Reservation model class: Represents the details of a single reservation, this class contains a reference to a
  * guest, bill, and a set of rooms. Each reservation is made under a single guest and contains only one bill.
  **********************************************************************************************************************/
 package models;
@@ -10,6 +12,8 @@ import utils.Status;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+
+
 
 public class Reservation {
     private final int id;
@@ -29,6 +33,7 @@ public class Reservation {
         this.status = Status.OPEN;
     }
 
+
     public void setGuest(Guest guest) { this.guest = guest; }
     public void setRooms(Collection<Room> rooms) { this.rooms = rooms; }
     public void setBillingInfo(Bill billingInfo) { this.billingInfo = billingInfo; }
@@ -36,6 +41,7 @@ public class Reservation {
     public void setCheckOutDate(String checkOutDate) { this.checkOutDate = checkOutDate; }
     public void setNumOfGuests(int numOfGuests) { this.numOfGuests = numOfGuests; }
     public void setStatus(Status status) { this.status = status; }
+
 
     public Guest getGuest() { return guest; }
     public Collection<Room> getRooms() { return rooms; }
@@ -46,6 +52,7 @@ public class Reservation {
     public int getNumOfGuests() { return numOfGuests; }
     public Status getStatus() { return status; }
 
+
     public String getcompleteDateAsString() { return checkInDate + " | " + checkOutDate; }
     public Room getFirstRoom() {
         if (rooms != null && !rooms.isEmpty()) {
@@ -55,12 +62,14 @@ public class Reservation {
         return null;
     }
 
+
     public Room searchRoomById(int srcId) {
         for (Room room : rooms) {
             if (room.getRoomNum() == srcId) return room;
         }
         return null;
     }
+
 
     public Collection<Room> searchRoomByType(RoomType srcType) {
         Collection<Room> rcRooms = new ArrayList<>();

@@ -1,5 +1,7 @@
 /***********************************************************************************************************************
- * Admin Model Class: Contains the admin login information and uses methods to compare provided strings with the admin
+ * Hotel Reservation Desktop Application
+ *
+ * Admin model class: Contains the admin login information and uses methods to compare provided strings with the admin
  * credentials present within the class upon instantiation.
  * name01, password01
  * name02, password02
@@ -23,12 +25,6 @@ public class Admin {
     public String getPassword() { return password; }
 
 
-    public boolean correctUsername(String usernameStr) {
-        return usernameStr.equals(username);
-    }
-
-
-    public boolean correctPassword(String passwordStr) {
-        return passwordStr.equals(password);
-    }
+    public boolean correctUsername(String usernameStr) { return usernameStr.equals(username); }
+    public boolean correctPassword(String passwordStr) { return passwordStr.equals(password); }
 }

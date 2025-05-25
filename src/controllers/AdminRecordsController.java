@@ -1,6 +1,10 @@
 /***********************************************************************************************************************
- * Admin Records Controller: Controls the admin level records for the whole system, has the ability to display guests,
- * bookings, billing information records and also allows the user to add a new record or delete an old one.
+ * Hotel Reservation Desktop Application
+ *
+ * Admin records controller class: Controls the admin level records for the whole system, has the ability to display
+ * guests, bookings, billing information records and also allows the user to add a new record or delete an old one.
+ * The admin can also check guests out from this area of the application, since the checkout screen is not available
+ * anywhere else in the app, reserved for admin level control.
  **********************************************************************************************************************/
 package controllers;
 
@@ -35,6 +39,8 @@ import java.util.stream.Collectors;
 
 import static app.Main.*;
 
+
+
 public class AdminRecordsController implements Initializable {
     @FXML private TextField bookingsTF, customerTF, billingTF;
     @FXML private Text recordTitleText;
@@ -51,10 +57,10 @@ public class AdminRecordsController implements Initializable {
     @FXML private TableColumn<Reservation, Integer> billingNumCol;
     @FXML private TableColumn<Reservation, Double> subTotalCol, hstCol, totalCol, discountCol;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private ObservableList<Reservation> reservations;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         setTextFieldToNumsOnly(bookingsTF);
         setTextFieldToNumsOnly(billingTF);
@@ -71,48 +77,45 @@ public class AdminRecordsController implements Initializable {
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void addRecord(ActionEvent event) {
-        Logging.logActivity("Admin Added a new Reservation at " + LocalDateTime.now());
+        getLogger().logActivity("Admin Added a new Reservation at " + LocalDateTime.now());
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        CheckInFormController controller = getLoaderMap().get(SceneName.CHECKINFORM).getController();
-        controller.setOriginPoint("adminRecords");
-        stage.setScene(getSceneMap().get(SceneName.CHECKINFORM));
+        CheckInFormController cn = getSceneBuilder().getLoaders().get(SceneName.CHECKINFORM).getController();
+        cn.setOriginPoint("adminRecords");
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.CHECKINFORM));
         stage.show();
     }
 
 
     public void checkoutGuest(ActionEvent event) {
-        Reservation resToCheckout = getTheReservation();
-        if (resToCheckout == null) {
+        Reservation res = getTheReservation();
+        if (res == null) {
             showErrorAlert("No Reservation record was selected.\nPlease pick a reservation to checkout.");
-        } else if (resToCheckout.getRooms() == null) {
+        } else if (res.getRooms() == null) {
             showErrorAlert("This reservation has already been paid and closed.\n Please select a valid option.");
             clearTableSelections();
         } else {
-            Logging.logActivity("Admin Checked Guest: " + resToCheckout.getGuest().getName() +
-                                " out at " + LocalDateTime.now());
+            getLogger().logActivity("Admin checked " + res.getGuest().getName() +  " out at " + LocalDateTime.now());
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            PaymentCheckoutController controller = getLoaderMap().get(SceneName.PAYMENTFORM).getController();
-            controller.setFormForPayment(resToCheckout);
-            stage.setScene(getSceneMap().get(SceneName.PAYMENTFORM));
+            PaymentCheckoutController cn = getSceneBuilder().getLoaders().get(SceneName.PAYMENTFORM).getController();
+            cn.setFormForPayment(res);
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.PAYMENTFORM));
             stage.show();
         }
     }
 
 
     public void deleteRecord(ActionEvent event) {
-        Reservation resToDel = getTheReservation();
-        if (resToDel == null) {
+        Reservation res = getTheReservation();
+        if (res == null) {
             showErrorAlert("No Reservation record was selected.\nPlease pick a reservation to delete.");
         } else {
             if (showDeletionAlert("This Reservation Record and all corresponding Information will be deleted." +
                                   "Do you still want to proceed?")) {
-                Logging.logActivity("Admin deleted a record of reservation with ID: " + resToDel.getId() +
-                                    " and under guest name: " + resToDel.getGuest().getName() +
-                                    " at " + LocalDateTime.now());
-                deleteTableRecordsAndUpdateAppTables(resToDel);
+                getLogger().logActivity("Admin deleted a reservation with ID: " + res.getId() +
+                                        " under name: " + res.getGuest().getName() +
+                                        " at " + LocalDateTime.now());
+                deleteTableRecordsAndUpdateAppTables(res);
             }
             else clearTableSelections();
         }
@@ -121,19 +124,16 @@ public class AdminRecordsController implements Initializable {
 
     public void exitRecords(ActionEvent event) {
         if (showExitingAlert("Are you sure you want to leave and return to homescreen?")) {
-            Logging.logActivity("Admin logged out at " + LocalDateTime.now());
+            getLogger().logActivity("Admin logged out at " + LocalDateTime.now());
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
             stage.show();
         }
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setRecordTables() {
         reservations = loadTableDataWithSQL();
-        // setting bookings info
         customerIDCol.setCellValueFactory(cell ->
                 new SimpleIntegerProperty(cell.getValue().getGuest().getId()).asObject());
         roomNumCol.setCellValueFactory(cell -> {
@@ -151,7 +151,7 @@ public class AdminRecordsController implements Initializable {
         checkDatesCol.setCellValueFactory(cell ->
                 new SimpleStringProperty(cell.getValue().getcompleteDateAsString()));
         bookingsTableView.setItems(reservations);
-        // setting guest info
+
         customerNameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGuest().getName()));
         emailCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGuest().getEmail()));
         phoneNumCol.setCellValueFactory(cell ->
@@ -159,7 +159,7 @@ public class AdminRecordsController implements Initializable {
         addressCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGuest().getAddress()));
         vinNumCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGuest().getVinNumber()));
         customerTableView.setItems(reservations);
-        // setting billing info
+
         billingNumCol.setCellValueFactory(cell ->
                 new SimpleIntegerProperty(cell.getValue().getBillingInfo().getId()).asObject());
         subTotalCol.setCellValueFactory(cell ->
@@ -190,7 +190,7 @@ public class AdminRecordsController implements Initializable {
             guestSt.executeUpdate();
             billSt.executeUpdate();
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in deleteTableRecordsAndUpdateAppTables() - Admin records controller");
+            getLogger().logException(e, "SQL Error in delete table method, Admin records controller");
         }
         setRecordTables();
     }
@@ -225,64 +225,76 @@ public class AdminRecordsController implements Initializable {
                 reservations.add(res);
             }
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in loadTableDataWithSQL() - Admin records controller");
+            getLogger().logException(e, "SQL Error in loadTableDataWithSQL(), Admin records controller");
         }
         return reservations;
     }
 
 
-    private Map<Integer, Guest> setMapOfGuests(ResultSet rs) throws SQLException {
+    private Map<Integer, Guest> setMapOfGuests(ResultSet rs) {
         Map<Integer, Guest> guestMap = new HashMap<>();
-        while (rs.next()) {
-            int id = rs.getInt(1);
-            guestMap.put(id,new Guest(
-                    id,
-                    rs.getString(2),
-                    rs.getString(5),
-                    rs.getInt(3),
-                    rs.getString(4),
-                    rs.getString(6)
-            ));
+        try {
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                guestMap.put(id,new Guest(
+                        id,
+                        rs.getString(2),
+                        rs.getString(5),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(6)
+                ));
+            }
+        } catch (SQLException e) {
+            getLogger().logException(e, "SQL Error in setMapOfGuests(), Admin records controller");
         }
         return guestMap;
     }
 
 
-    private Map<Integer, Bill> setMapOfBills(ResultSet rs) throws SQLException {
+    private Map<Integer, Bill> setMapOfBills(ResultSet rs) {
         Map<Integer, Bill> billMap = new HashMap<>();
-        while (rs.next()) {
-            int id = rs.getInt(1);
-            billMap.put(id, new Bill(
-                    id,
-                    rs.getDouble(3),
-                    rs.getDouble(4),
-                    rs.getDouble(5)
-            ));
+        try {
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                billMap.put(id, new Bill(
+                        id,
+                        rs.getDouble(3),
+                        rs.getDouble(4),
+                        rs.getDouble(5)
+                ));
+            }
+        } catch (SQLException e) {
+            getLogger().logException(e, "SQL Error in setMapOfBills(), Admin records controller");
         }
         return billMap;
     }
 
 
-    private Map<Integer, ArrayList<Room>> setMapOfRooms(ResultSet rs) throws SQLException {
+    private Map<Integer, ArrayList<Room>> setMapOfRooms(ResultSet rs) {
         Map<Integer, ArrayList<Room>> roomMap = new HashMap<>();
-        while (rs.next()) {
-            int resId = rs.getInt(5);
-            RoomType type;
-            if (rs.getString(2).equals("single")) type = RoomType.SINGLE;
-            else if (rs.getString(2).equals("double")) type = RoomType.DOUBLE;
-            else if (rs.getString(2).equals("delux"))  type = RoomType.DELUX;
-            else type = RoomType.PENTHOUSE;
-            Status roomState;
-            if (rs.getString(6).equals("available")) roomState = Status.AVAILABLE;
-            else roomState = Status.BOOKED;
-            Room room = new Room(
-                    rs.getInt(1),
-                    type,
-                    rs.getInt(3),
-                    rs.getDouble(4),
-                    roomState
-            );
-            roomMap.computeIfAbsent(resId, k -> new ArrayList<>()).add(room);
+        try {
+            while (rs.next()) {
+                int resId = rs.getInt(5);
+                RoomType type;
+                if (rs.getString(2).equals("single")) type = RoomType.SINGLE;
+                else if (rs.getString(2).equals("double")) type = RoomType.DOUBLE;
+                else if (rs.getString(2).equals("delux"))  type = RoomType.DELUX;
+                else type = RoomType.PENTHOUSE;
+                Status roomState;
+                if (rs.getString(6).equals("available")) roomState = Status.AVAILABLE;
+                else roomState = Status.BOOKED;
+                Room room = new Room(
+                        rs.getInt(1),
+                        type,
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        roomState
+                );
+                roomMap.computeIfAbsent(resId, k -> new ArrayList<>()).add(room);
+            }
+        } catch (SQLException e) {
+            getLogger().logException(e, "SQL Error in setMapOfRooms(), Admin records controller");
         }
         return roomMap;
     }
@@ -341,8 +353,6 @@ public class AdminRecordsController implements Initializable {
     }
 
 
-
-    // TextField Listeners ---------------------------------------------------------------------------------------------
     private void searchByRoomNum(TextField textField) {
         textField.textProperty().addListener((_, _, newStr) -> {
             if (newStr.isEmpty()) bookingsTableView.setItems(reservations);
@@ -360,6 +370,7 @@ public class AdminRecordsController implements Initializable {
                     bookingsTableView.setItems(filteredList);
                 } catch (NumberFormatException e) {
                     bookingsTableView.setItems(FXCollections.emptyObservableList());
+                    getLogger().logException(e, "Number formatting error for rooms, Admin records controller");
                 }
             }
         });
@@ -373,8 +384,10 @@ public class AdminRecordsController implements Initializable {
                 ObservableList<Reservation> filteredList = reservations.stream()
                         .filter(res -> {
                             Guest guest = res.getGuest();
-                            return  guest != null && (guest.getName().toLowerCase().contains(newStr.toLowerCase()) ||
-                                    guest.getVinNumber().toLowerCase().contains(newStr.toLowerCase()));
+                            return  guest != null && (
+                                    guest.getName().toLowerCase().contains(newStr.toLowerCase()) ||
+                                    guest.getVinNumber().toLowerCase().contains(newStr.toLowerCase())
+                            );
                         }).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 customerTableView.setItems(filteredList);
             }
@@ -394,7 +407,10 @@ public class AdminRecordsController implements Initializable {
                                 return billingInfo != null && billingInfo.getId() == billingNum;
                             }).collect(Collectors.toCollection(FXCollections::observableArrayList));
                     billingTableView.setItems(filteredList);
-                } catch (NumberFormatException e) { billingTableView.setItems(FXCollections.emptyObservableList()); }
+                } catch (NumberFormatException e) {
+                    billingTableView.setItems(FXCollections.emptyObservableList());
+                    getLogger().logException(e, "Number formating error for bills, Admin records controller");
+                }
             }
         });
     }
@@ -411,8 +427,6 @@ public class AdminRecordsController implements Initializable {
     }
 
 
-
-    // TableView Formatter ---------------------------------------------------------------------------------------------
     private <T> void formatDoubleColumn(TableColumn<T, Double> column) {
         column.setCellFactory(doubleTableColumn -> new TableCell<>() {
             @Override protected void updateItem(Double price, boolean empty) {

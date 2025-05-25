@@ -22,7 +22,8 @@
       <URL value="@../styles/button-styles.css" />
    </stylesheets>
    <center>
-      <TabPane fx:id="recordsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="150.0" tabMaxWidth="200.0" tabMinHeight="30.0" tabMinWidth="200.0" BorderPane.alignment="CENTER">
+      <TabPane fx:id="recordsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
+               tabMaxHeight="150.0" tabMaxWidth="200.0" tabMinHeight="30.0" tabMinWidth="200.0" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="bookingsTab" text="View Bookings">
             <content>

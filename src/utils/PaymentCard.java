@@ -1,6 +1,8 @@
 /***********************************************************************************************************************
- * Payment Card Class: Represents the various payment cards that might be available for the customer to use when
- * paying for their hotel room. This class is used as a collections class to hold the card types.
+ * Hotel Reservation Desktop Application
+ *
+ * Payment card utility class: Contains every possible type of payment card currently supported within the application
+ * and by extension within the system. An easy-to-access area if payment cards needed to be changed app wide.
  **********************************************************************************************************************/
 package utils;
 

@@ -1,5 +1,7 @@
 /***********************************************************************************************************************
- * Guest Model Class: Represents the information of a single guest including their name, contact information, and
+ * Hotel Reservation Desktop Application
+ *
+ * Guest model class: Represents the information of a single guest including their name, contact information, and
  * their vin number used to register customers of the hotel.
  **********************************************************************************************************************/
 package models;

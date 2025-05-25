@@ -1,11 +1,15 @@
 /***********************************************************************************************************************
- * Room Model Class: Contains the room information for any room within the hotel, include things like number of beds,
+ * Hotel Reservation Desktop Application
+ *
+ * Rooms model class: Contains the room information for any room within the hotel, include things like number of beds,
  * room number, and price. It also shows the status of the room, available or not, which can be changed.
  **********************************************************************************************************************/
 package models;
 
 import utils.RoomType;
 import utils.Status;
+
+
 
 public class Room {
     private final int roomNum;

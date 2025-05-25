@@ -1,12 +1,13 @@
 /***********************************************************************************************************************
- * Rooms Form Controller: Manages the room information for the guests, suggests rooms, and records selection made. Has
- * dynamic form validation for all fields within the forms and final validation upon submission of each form.
+ * Hotel Reservation Desktop Application
+ *
+ * Rooms form controller class: Manages the room information for the guests, suggests rooms, and records selection
+ * made. Has dynamic form validation for all fields within the forms and final validation upon submission of each form.
  **********************************************************************************************************************/
 package controllers;
 
 import models.Reservation;
 import models.Room;
-import utils.Logging;
 import utils.RoomType;
 import utils.SceneName;
 import utils.Status;
@@ -28,16 +29,18 @@ import java.util.ResourceBundle;
 
 import static app.Main.*;
 
+
+
 public class RoomFormController implements Initializable {
     @FXML private TextField roomAutoGenTF;
     @FXML private Spinner<Integer> singleRSpinner, doubleRSpinner;
     @FXML private Spinner<Integer> deluxRSpinner, pentHouseRSpinner;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private String originPoint;
     private Reservation reservation;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         setRoomSpinnerValue(singleRSpinner);
         setRoomSpinnerValue(doubleRSpinner);
@@ -46,13 +49,12 @@ public class RoomFormController implements Initializable {
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void confirmRooms(ActionEvent event) {
         if (formEmptyChecker()) {
             showErrorAlert("Please use the form to add which rooms you'd refer.");
             return;
         }
+
         try (Statement statement = getConnection().createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT * FROM Rooms");
             Collection<Room> rooms = loadRoomsFromDB(rs);
@@ -65,12 +67,13 @@ public class RoomFormController implements Initializable {
                 return;
             }
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in confirmRooms() - Room Form controller");
+            getLogger().logException(e, "SQL Error in confirmRooms() - Room Form controller");
         }
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GuestInfoFormController controller = getLoaderMap().get(SceneName.GUESTINFOFORM).getController();
-        controller.setOriginPoint(originPoint, reservation);
-        stage.setScene(getSceneMap().get(SceneName.GUESTINFOFORM));
+        GuestInfoFormController cn = getSceneBuilder().getLoaders().get(SceneName.GUESTINFOFORM).getController();
+        cn.setOriginPoint(originPoint, reservation);
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.GUESTINFOFORM));
         stage.show();
     }
 
@@ -100,18 +103,16 @@ public class RoomFormController implements Initializable {
     public void cancel(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         if (originPoint.equals("homescreen")) {
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         } else {
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         }
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setOriginPoint(String srcOrigin, Reservation srcReservation) {
         this.originPoint = srcOrigin;
         this.reservation = srcReservation;
@@ -214,6 +215,7 @@ public class RoomFormController implements Initializable {
         int sVal3 = deluxRSpinner.getValue();
         int sVal4 = pentHouseRSpinner.getValue();
         Collection<Room> reservedRooms = new ArrayList<>();
+
         for (Room room : rooms) {
             if (room.getStatus() == Status.AVAILABLE) {
                 if (room.getRoomType() == RoomType.SINGLE && sVal1 > 0) {
@@ -234,6 +236,7 @@ public class RoomFormController implements Initializable {
                 }
             }
         }
+
         if (reservedRooms.isEmpty()) {
             showErrorAlert("The chosen rooms are not available, Sorry!!");
         } else if (!reservedRooms.isEmpty() && (sVal1 != 0 || sVal2 != 0 || sVal3 != 0 || sVal4 != 0)) {
@@ -244,8 +247,6 @@ public class RoomFormController implements Initializable {
     }
 
 
-
-    // Spinner Setter --------------------------------------------------------------------------------------------------
     private void setRoomSpinnerValue(Spinner<Integer> spinner) {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 4, 0);
         spinner.setValueFactory(valueFactory);

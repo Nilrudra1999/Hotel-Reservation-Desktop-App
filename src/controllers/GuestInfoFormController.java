@@ -1,12 +1,13 @@
 /***********************************************************************************************************************
- * Guest Info Form Controller: Manages the guest personal information like name, contact info, and a vin number. Has
- * dynamic form validation for all fields within the forms and final validation upon submission of each form.
+ * Hotel Reservation Desktop Application
+ *
+ * Guest info form controller class: Manages the guest personal information like name, contact info, and a vin number.
+ * Has dynamic form validation for all fields within the forms and final validation upon submission of each form.
  **********************************************************************************************************************/
 package controllers;
 
 import models.Guest;
 import models.Reservation;
-import utils.Logging;
 import utils.SceneName;
 
 import javafx.event.ActionEvent;
@@ -28,15 +29,17 @@ import java.util.function.UnaryOperator;
 
 import static app.Main.*;
 
+
+
 public class GuestInfoFormController implements Initializable {
     @FXML private TextField nameTF, emailTF, phoneNumTF, addressTF, vinNumTF;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private String originPoint;
     private Reservation reservation;
     private static int id = 0;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         setTextFieldToLettersOnly(nameTF);
         setTextFieldToNumsOnly(phoneNumTF);
@@ -45,8 +48,6 @@ public class GuestInfoFormController implements Initializable {
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void confirmGuestInfo(ActionEvent event) {
         if (formEmptyChecker()) {
             showErrorAlert("Please fill all required fields of the form to continue");
@@ -65,9 +66,9 @@ public class GuestInfoFormController implements Initializable {
         String vin = vinNumTF.getText();
         reservation.setGuest(new Guest(id += 1, name, email, phone, address, vin));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        ConfirmationController controller = getLoaderMap().get(SceneName.CONFIRMSCREEN).getController();
-        controller.setOriginPoint(originPoint, reservation);
-        stage.setScene(getSceneMap().get(SceneName.CONFIRMSCREEN));
+        ConfirmationController cn = getSceneBuilder().getLoaders().get(SceneName.CONFIRMSCREEN).getController();
+        cn.setOriginPoint(originPoint, reservation);
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.CONFIRMSCREEN));
         stage.show();
     }
 
@@ -75,18 +76,16 @@ public class GuestInfoFormController implements Initializable {
     public void cancel(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         if (originPoint.equals("homescreen")) {
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         } else {
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         }
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setOriginPoint(String srcOrigin, Reservation srcReservation) {
         this.originPoint = srcOrigin;
         this.reservation = srcReservation;
@@ -144,13 +143,11 @@ public class GuestInfoFormController implements Initializable {
              ResultSet rs = st.executeQuery()) {
             if (rs.next()) id = rs.getInt("max_id");
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in readGuestIdValue() - Guest Form controller");
+            getLogger().logException(e, "SQL Error in readGuestIdValue(), Guest Form controller");
         }
     }
 
 
-
-    // TextField Listeners ---------------------------------------------------------------------------------------------
     private void setTextFieldToLettersOnly(TextField textField) {
         UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();

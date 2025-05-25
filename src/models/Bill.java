@@ -1,6 +1,8 @@
 /***********************************************************************************************************************
- * Billing Model Class: Represents the details of a single bill that's assigned to a reservation, each reservation has
- * an auto-generated bill object associated with it.
+ * Hotel Reservation Desktop Application
+ *
+ * Billing model class: Represents the details of a single bill that's assigned to a reservation, each reservation
+ * has an auto-generated bill object associated with it.
  **********************************************************************************************************************/
 package models;
 

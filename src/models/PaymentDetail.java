@@ -1,5 +1,7 @@
 /***********************************************************************************************************************
- * Payment Details Model Class: Represents the details of a single credit card or some kind of payment card used by
+ * Hotel Reservation Desktop Application
+ *
+ * Payment details model class: Represents the details of a single credit card or some kind of payment card used by
  * the guests to pay their bills upon checkout.
  **********************************************************************************************************************/
 package models;

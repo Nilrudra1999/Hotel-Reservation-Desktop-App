@@ -1,13 +1,14 @@
 /***********************************************************************************************************************
- * Confirmation Controller: Confirms the information that has been added to the reservation by showing all necessary
- * info to the user, and prompting for confirmation, additionally it calculates the bill in the background.
+ * Hotel Reservation Desktop Application
+ *
+ * Confirmation controller class: Confirms the information that has been added to the reservation by showing all
+ * necessary info to the user, and prompting for confirmation, additionally it calculates the bill in the background.
  **********************************************************************************************************************/
 package controllers;
 
 import models.Bill;
 import models.Reservation;
 import models.Room;
-import utils.Logging;
 import utils.SceneName;
 import utils.Status;
 
@@ -33,40 +34,40 @@ import java.util.ResourceBundle;
 
 import static app.Main.*;
 
+
+
 public class ConfirmationController implements Initializable {
     @FXML private ListView<String> confirmInfoListView;
     @FXML private Text mainMsgText;
     @FXML private ImageView confirmImgView;
 
-    private final String mediaPath = "/ca/senecacollege/cpa/app/media/reservationConfirm-img.jpg";
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String mediaPath = "/media/reservationConfirm-img.jpg";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private String originPoint;
     private Reservation reservation;
     private static int id = 0;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             confirmImgView.setImage(new Image(getClass().getResource(mediaPath).toExternalForm()));
             confirmImgView.setPreserveRatio(false);
         } catch (Exception e) {
-            Logging.logException(e, "General Exception in initialize() - Confirmation screen controller");
+            getLogger().logException(e, "General Exception in initialize() - Confirmation screen controller");
         }
         readBillingIdValue();
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void confirmInfo(ActionEvent event) {
         loadDbWithNewReservation();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         if (originPoint.equals("homescreen")) {
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         } else {
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         }
         stage.show();
     }
@@ -75,18 +76,16 @@ public class ConfirmationController implements Initializable {
     public void cancelInfo(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         if (originPoint.equals("homescreen")) {
-            stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         } else {
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         }
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setOriginPoint(String srcOrigin, Reservation srcReservation) {
         this.originPoint = srcOrigin;
         this.reservation = srcReservation;
@@ -142,7 +141,7 @@ public class ConfirmationController implements Initializable {
              ResultSet rs = st.executeQuery()) {
             if (rs.next()) id = rs.getInt("max_id");
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in readBillingIdValue() - Confirmation screen controller");
+            getLogger().logException(e, "SQL Error in readBillingIdValue(), Confirmation screen controller");
         }
     }
 
@@ -192,7 +191,7 @@ public class ConfirmationController implements Initializable {
                 roomST.executeUpdate();
             }
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in loadDbWithNewReservation() - Confirmation screen controller");
+            getLogger().logException(e, "SQL Error while loading the database, Confirmation screen controller");
         }
     }
 }

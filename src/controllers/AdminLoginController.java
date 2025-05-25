@@ -1,11 +1,12 @@
 /***********************************************************************************************************************
- * Admin Login Controller: Allows the admin or individuals with admin credentials to login into the system, and view
- * the admin level records, simple form with validation and uses database querying to check credentials.
+ * Hotel Reservation Desktop Application
+ *
+ * Admin login controller class: Allows the admin or individuals with admin credentials to login into the system,
+ * and view the admin level records, simple form with validation and uses database querying to check credentials.
  **********************************************************************************************************************/
 package controllers;
 
 import models.Admin;
-import utils.Logging;
 import utils.SceneName;
 
 import javafx.event.ActionEvent;
@@ -30,27 +31,27 @@ import java.util.ResourceBundle;
 
 import static app.Main.*;
 
+
+
 public class AdminLoginController implements Initializable {
     @FXML private TextField usernameTF, passwordTF;
     @FXML private ImageView loginImgView;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
-    private final String mediaPath = "/ca/senecacollege/cpa/app/media/login-img.jpg";
+    private final String alertCssPath = "/styles/alert-styles.css";
+    private final String mediaPath = "/media/login-img.jpg";
     private Collection<Admin> admins;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             loginImgView.setImage(new Image(getClass().getResource(mediaPath).toExternalForm()));
             loginImgView.setPreserveRatio(false);
         } catch (Exception e) {
-            Logging.logException(e, "General Exception in initialize() - Admin Login controller");
+            getLogger().logException(e, "General Exception in initialize() - Admin Login controller");
         }
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void loginAdmin(ActionEvent event) {
         String username = usernameTF.getText();
         String password = passwordTF.getText();
@@ -61,11 +62,11 @@ public class AdminLoginController implements Initializable {
         if (!correctCreds) {
             showErrorAlert("Either one or both credentials entered are incorrect.\nPlease try again.");
         } else {
-            Logging.logActivity("Admin " + username + " logged in at: " + LocalDateTime.now());
+            getLogger().logActivity("Admin " + username + " logged in at: " + LocalDateTime.now());
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-            controller.setRecordTables();
-            stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
             stage.show();
         }
     }
@@ -73,13 +74,11 @@ public class AdminLoginController implements Initializable {
 
     public void cancel(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(getSceneMap().get(SceneName.HOMESCREEN));
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.HOMESCREEN));
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setAdminsToController() {
         loadAdminsFromDb();
         clearForm();
@@ -95,7 +94,7 @@ public class AdminLoginController implements Initializable {
                 admins.add(new Admin(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in loadAdminsFromDb() - Admin Login controller");
+            getLogger().logException(e, "SQL Error in loadAdminsFromDb(), admin login controller");
         }
     }
 

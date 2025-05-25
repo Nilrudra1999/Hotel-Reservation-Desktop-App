@@ -1,13 +1,14 @@
 /***********************************************************************************************************************
- * Payments and Checkout Controller: Manages the checkout process for any reservation, contains a form validation and
- * hidden field for adding discount, also transfers new data to the database and adjusts old data.
+ * Hotel Reservation Desktop Application
+ *
+ * Payment and checkout controller class: Manages the checkout process for any reservation, contains a form
+ * validation and hidden field for adding discount, also transfers new data to the database and adjusts old data.
  **********************************************************************************************************************/
 package controllers;
 
 import models.PaymentDetail;
 import models.Reservation;
 import models.Room;
-import utils.Logging;
 import utils.PaymentCard;
 import utils.SceneName;
 import utils.Status;
@@ -28,15 +29,17 @@ import java.util.function.UnaryOperator;
 
 import static app.Main.*;
 
+
+
 public class PaymentCheckoutController implements Initializable {
     @FXML private TextField cardNumTF, discountTF, cscTF;
     @FXML private ChoiceBox<String> cardTypeCB;
     @FXML private DatePicker expDatePicker;
 
-    private final String alertCssPath = "/ca/senecacollege/cpa/app/styles/alert-styles.css";
+    private final String alertCssPath = "/styles/alert-styles.css";
     private Reservation reservation;
 
-    // Initializable Method --------------------------------------------------------------------------------------------
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         discountTF.setVisible(false);
         cardTypeCB.getItems().addAll(new PaymentCard().getCards());
@@ -46,8 +49,6 @@ public class PaymentCheckoutController implements Initializable {
     }
 
 
-
-    // Event Handlers --------------------------------------------------------------------------------------------------
     public void confirmPayment(ActionEvent event) {
         if (isFormEmpty()) {
             showErrorAlert("Either one or more of the fields is empty\n" +
@@ -69,9 +70,9 @@ public class PaymentCheckoutController implements Initializable {
             }
             showInfoAlert(String.valueOf(roomsClearedStr));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            FeedbackController controller = getLoaderMap().get(SceneName.FEEDBACKFORM).getController();
-            controller.setForm();
-            stage.setScene(getSceneMap().get(SceneName.FEEDBACKFORM));
+            AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+            cn.setRecordTables();
+            stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
             stage.show();
         }
     }
@@ -84,15 +85,13 @@ public class PaymentCheckoutController implements Initializable {
 
     public void cancel(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        AdminRecordsController controller = getLoaderMap().get(SceneName.ADMINRECORDS).getController();
-        controller.setRecordTables();
-        stage.setScene(getSceneMap().get(SceneName.ADMINRECORDS));
+        AdminRecordsController cn = getSceneBuilder().getLoaders().get(SceneName.ADMINRECORDS).getController();
+        cn.setRecordTables();
+        stage.setScene(getSceneBuilder().getScenes().get(SceneName.ADMINRECORDS));
         stage.show();
     }
 
 
-
-    // Helper Methods --------------------------------------------------------------------------------------------------
     public void setFormForPayment(Reservation srcReservation) {
         this.reservation = srcReservation;
         clearForm();
@@ -191,6 +190,7 @@ public class PaymentCheckoutController implements Initializable {
                     break;
                 }
             }
+
             if (!existingCard) {
                 PaymentDetail paymentDetail = reservation.getBillingInfo().getPaymentDetail();
                 payDSt.setInt(1, paymentDetail.getCardNum());
@@ -200,6 +200,7 @@ public class PaymentCheckoutController implements Initializable {
                 payDSt.setInt(5, reservation.getGuest().getId());
                 payDSt.executeUpdate();
             }
+
             billSt.setDouble(1, reservation.getBillingInfo().getDiscount());
             billSt.setInt(2, reservation.getBillingInfo().getPaymentDetail().getCardNum());
             billSt.setInt(3, reservation.getBillingInfo().getId());
@@ -207,19 +208,18 @@ public class PaymentCheckoutController implements Initializable {
             resSt.setString(1, "closed");
             resSt.setInt(2, reservation.getId());
             resSt.executeUpdate();
+
             for (Room room : reservation.getRooms()) {
                 roomSt.setString(1, "available");
                 roomSt.setInt(2, room.getRoomNum());
                 roomSt.executeUpdate();
             }
         } catch (SQLException e) {
-            Logging.logException(e, "SQL Error in addPaymentDetailAndOtherChangesToDb() - Payment form controller");
+            getLogger().logException(e, "SQL Error when adding db changes, Payment form controller");
         }
     }
 
 
-
-    // TextField Listeners ---------------------------------------------------------------------------------------------
     private void setTextFieldToNumsOnly(TextField textField) {
         UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();
